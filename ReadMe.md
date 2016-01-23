@@ -4,7 +4,7 @@ This little python script downloads the content from solidfiles. The reason I ca
 
 # POINT TO REMEMBER
 
-This script is written on python 2.7, and hence MIGHT not work on older python versions or even the new one. But, I've inscluded python2.7 portable file, so you can use that as well.
+This script is written on python 2.7, and hence MIGHT not work on older python versions or even the new one. But, I've included python2.7 portable file, so you can use that as well.
 
 
 
@@ -23,9 +23,9 @@ None. And I don't plan on making one. Just pull up requests on github or email m
 
 2.) requests (Included Within This Script)
 
-3.) urllib3 (Already There In Python)
+3.) urllib3 (Included Within This Script)
 
-4.) tqdm (Already There In Python)
+4.) tqdm (Included Within This Script)
 
 So, You don't really Need to install or download anything extra.
 
