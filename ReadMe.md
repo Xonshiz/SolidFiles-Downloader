@@ -27,6 +27,8 @@ None. And I don't plan on making one. Just pull up requests on github or email m
 
 4.) tqdm (Included Within This Script)
 
+5.) lxml ( pip install lxml or grab from here : https://pypi.python.org/pypi/lxml/3.6.0#downloads)
+
 So, You don't really Need to install or download anything extra.
 
 
