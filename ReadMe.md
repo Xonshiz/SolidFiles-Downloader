@@ -1,10 +1,10 @@
 # SolidFiles Downloader
-This little python script downloads the content from solidfiles. The reason I came up with this is 'SolidFiles using too much Pop Ups'. Just copy and paste the SolidFile's link in this script, and wait till it downloads.
+This little python script downloads the content from solidfiles. The reason I came up with this is 'SolidFiles using too much Pop Ups'. Just copy and paste the SolidFile's link in this script, and wait till it downloads.There shouldn't be any BUGS, but, if there are, then please write to me at x@psychoticelites.com or open an issue on GitHub.
 
 
 # POINT TO REMEMBER
 
-This script is written on python 2.7, and hence MIGHT not work on older python versions or even the new one. But, I've included python2.7 portable file, so you can use that as well.
+This script is written on python 2.7, and hence MIGHT not work on older python versions or even the new one. But, I've included python 2.7 portable file, so you can use that as well.
 
 
 
@@ -44,6 +44,13 @@ So, You don't really Need to install or download anything extra.
 # Features To Come / Planned Updates
 
 1.) To show how much time is left in completing the file download.
+
+
+# Update Log :
+
+1.) Re-wrote the whole script with function calls for better work flow.
+
+2.) If the file doesn't exist, the script gives the respective error(s).
 
 
 If you have any queries or want me to make a script to automate something, feel free to drop me an email at :
