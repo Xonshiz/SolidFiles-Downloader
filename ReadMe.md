@@ -52,6 +52,8 @@ So, You don't really Need to install or download anything extra.
 
 2.) If the file doesn't exist, the script gives the respective error(s).
 
+3.) Fixed the Slow Download Speed in the script.
+
 
 If you have any queries or want me to make a script to automate something, feel free to drop me an email at :
 x[at]psychoticelites.com

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
+__author__ = "Xonshiz"
 
 '''
 
@@ -20,6 +20,7 @@ Email ID: x@psychoticelites.com
 
 --> Re-wrote the whole script with function calls for better work flow.
 --> If the file doesn't exist, the script gives the respective error(s).
+--> Slow download speed issue fixed.
 
 There shouldn't be any BUGS, but, if there are, then please write to me at x@psychoticelites.com or open an issue on GitHub.
 
@@ -112,7 +113,7 @@ def Title_Lookup(soup):
 def File_Downloader(ddl,titleclean):
 	dlr = requests.get(ddl, stream=True) #Downloading the content using python.
 	with open(titleclean, "wb") as handle:
-		for data in tqdm(dlr.iter_content()):
+		for data in tqdm(dlr.iter_content(chunk_size=1024)): #Added chunk size to speed up the downloads
 			handle.write(data)
 	print 'Download has been completed.' #Viola		
 
