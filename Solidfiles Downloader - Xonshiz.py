@@ -54,7 +54,7 @@ def Link_Input():
 		Link = raw_input("Please enter your Link : ")
 		return Link
 		if not Link:
-			raise ValueError('Please Enter A Link To The Video. This Application Will now Exit in 5 Seconds.')
+			raise ValueError('Please Enter A Link To The SolidFile. This Application Will now Exit in 5 Seconds.')
 	except ValueError as e:
 		print(e)
     	time.sleep(5)
