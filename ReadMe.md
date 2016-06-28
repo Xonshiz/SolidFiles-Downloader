@@ -1,5 +1,5 @@
 # SolidFiles Downloader
-This little python script downloads the content from solidfiles. The reason I came up with this is 'SolidFiles using too much Pop Ups'. Just copy and paste the SolidFile's link in this script, and wait till it downloads.There shouldn't be any BUGS, but, if there are, then please write to me at x@psychoticelites.com or open an issue on GitHub.
+This little python script downloads the content from solidfiles. The reason I came up with this is 'SolidFiles using too much Pop Ups'. Just copy and paste the SolidFile's link in this script, and wait till it downloads.There shouldn't be any BUGS, but, if there are, then please write to me at xonshiz@psychoticelites.com or open an issue on GitHub.
 
 
 # POINT TO REMEMBER
@@ -58,13 +58,5 @@ So, You don't really Need to install or download anything extra.
 
 
 If you have any queries or want me to make a script to automate something, feel free to drop me an email at :
-x[at]psychoticelites.com
+xonshiz[at]psychoticelites.com
 
-Finally, some emails for webscrappers and shitty spam bots :
-iam@justkidding.com
-
-youknow@thisisfree.com
-
-okay@stopnow.com
-
-this@mylastattempatsomethingfunny.com
