@@ -11,7 +11,7 @@ Script Info :
 Author : Xonshiz
 Github : https://github.com/Xonshiz
 Website : http://www.psychoticelites.com
-Email ID: x@psychoticelites.com
+Email ID: xonshiz@psychoticelites.com
 
 
 -------------------------------------------------------------------------
@@ -22,7 +22,7 @@ Email ID: x@psychoticelites.com
 --> If the file doesn't exist, the script gives the respective error(s).
 --> Slow download speed issue fixed.
 
-There shouldn't be any BUGS, but, if there are, then please write to me at x@psychoticelites.com or open an issue on GitHub.
+There shouldn't be any BUGS, but, if there are, then please write to me at xonshiz@psychoticelites.com or open an issue on GitHub.
 
 
 '''
@@ -86,7 +86,7 @@ def File_Lookup(soup):
 				try:
 					ddl = str(a['href'])
 					if not ddl:
-						raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at x@psychoticelites.com")
+						raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com")
 				except ValueError as e:
 					print(e)
 					time.sleep(5)
@@ -95,7 +95,7 @@ def File_Lookup(soup):
 
 
 		if not stringsubtitles:
-			raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at x@psychoticelites.com")        
+			raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com")        
 	except Exception, e:
 		print(e)
 		time.sleep(5)
@@ -125,7 +125,7 @@ Link = Link_Input()
 
 soup = Link_Opener(Link)
 if not soup:
-	print "Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at x@psychoticelites.com"
+	print "Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com"
 	exit()
 
 titleclean = Title_Lookup(soup)
