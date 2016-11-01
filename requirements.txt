@@ -1,0 +1,4 @@
+tqdm
+requests
+bs4
+urlib3
