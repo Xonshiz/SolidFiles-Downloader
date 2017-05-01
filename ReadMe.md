@@ -1,40 +1,31 @@
 # SolidFiles Downloader
-This little python script downloads the content from solidfiles. The reason I came up with this is 'SolidFiles using too much Pop Ups'. Just copy and paste the SolidFile's link in this script, and wait till it downloads.There shouldn't be any BUGS, but, if there are, then please write to me at xonshiz@psychoticelites.com or open an issue on GitHub.
+
+This is a little python script that downloads the content from SolidFiles.com. This can be integrated in any of your python scripts and it'll return the various parameters for the file present on a particular SolidFiles link.
 
 
-# POINT TO REMEMBER
+# Python Support
 
-This script is written on python 2.7, and hence MIGHT not work on older python versions or even the new one. But, I've included python 2.7 portable file, so you can use that as well.
+This is supported by both, Python 2 and 3.
 
+# Windows Binary 
 
-
-# Are there any threads for this thing?
-
-None. And I don't plan on making one. Just pull up requests on github or email me (Look At Bottom).
-
+If you're on windows, then you should grab the windows binary from the release section, rather than running python script.
 
 # What do I need to run this thing?
 
-1.) Python 2.7.x
+1.) Python 2.7.x or Pythno 3.x.x
 
 # Python Libraries Required
 
-1.) BeautifulSoup 4.3.2 (Included Within This Script)
+1.) requests
 
-2.) requests (Included Within This Script)
+2.) tqdm
 
-3.) urllib3 (Included Within This Script)
-
-4.) tqdm (Included Within This Script)
-
-5.) lxml ( pip install lxml or grab from here : https://pypi.python.org/pypi/lxml/3.6.0#downloads)
-
-So, You don't really Need to install or download anything extra.
-
+You can get these libraries from `pip` or `easy_install` by running the commands. Or you can use the `requirements.txt` file provided in this repository to fetch all the dependencies at once.`pip install -r requirements.txt` is the command that should do the job. Make sure you're in the directory where the `requirements.txt` is present.
 
 # How do I do what I have to do? (Simple Guide)
 
-1.) Run this script. duh...
+1.) Run this script.
 
 2.) Copy the SoliFile's link and paste in this script.(Link Example:- http://www.solidfiles.com/d/01eae01e20/)
 
@@ -56,7 +47,17 @@ So, You don't really Need to install or download anything extra.
 
 3.) Fixed the Slow Download Speed in the script.
 
+4.) Re-wrote the script again to use the classes and remove the junk code. Simple structure now.
+
+# Donations
+You can always send some money over from this :
+
+Paypal : [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/xonshiz)
+
+Patreon Link : https://www.patreon.com/xonshiz
+
+Any amount is appreciated :)
+
 
 If you have any queries or want me to make a script to automate something, feel free to drop me an email at :
 xonshiz[at]psychoticelites.com
-

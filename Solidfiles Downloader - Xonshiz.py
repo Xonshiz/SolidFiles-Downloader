@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-__author__ = "Xonshiz"
-
 '''
 
 
@@ -10,126 +8,68 @@ Script Info :
 
 Author : Xonshiz
 Github : https://github.com/Xonshiz
-Website : http://www.psychoticelites.com
+Website : http://www.xonshiz.psychoticelites.com
 Email ID: xonshiz@psychoticelites.com
-
-
--------------------------------------------------------------------------
-				Info About The Latest Updated Script
--------------------------------------------------------------------------
-
---> Re-wrote the whole script with function calls for better work flow.
---> If the file doesn't exist, the script gives the respective error(s).
---> Slow download speed issue fixed.
-
-There shouldn't be any BUGS, but, if there are, then please write to me at xonshiz@psychoticelites.com or open an issue on GitHub.
-
 
 '''
 
-
-
-
-from bs4 import BeautifulSoup
-import urllib2
-import urllib
-import os
 import requests
+import re
+import json
 from tqdm import tqdm
-import time
+from sys import exit
 
 
-#Link = 'http://www.solidfiles.com/v/VVWePGrGWPXBG'
-#Link = 'http://www.solidfiles.com/d/d1c50f9322/'
+class SolidFiles(object):
+    def __init__(self):
+
+        try:
+            downloadUrl = str(raw_input("Enter the url : ")).strip()  # <-- Python 2.7
+        except :
+            downloadUrl = str(input("Enter the url : ")).strip()  # <-- Python 3
+
+        streamUrl, splashUrl, downloadUrl, embedUrl, ticket, nodeId, nodeName, filetype, shareUrl, subtitles = self.webPageDownloader(downloadUrl)
+        self.File_Downloader(downloadUrl, str(nodeName).replace(".001", ""))
 
 
+    def webPageDownloader(self, url):
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36'
+        }
+        pageSource = requests.get(url, headers = headers).text
 
-print '-------------------------------------------------------------------'
-print '                  Xonshiz SolidFiles Downloader                    '
-print '-------------------------------------------------------------------'
+        if 'Page not found | Solidfiles' in pageSource: # What do when 404? THIS!
+            print("Seems like the file is not present.")
+            print("Check the URL again manually please.")
 
+            exit(0)
 
-def Link_Input():
-	try:
-		Link = raw_input("Please enter your Link : ")
-		return Link
-		if not Link:
-			raise ValueError('Please Enter A Link To The SolidFile. This Application Will now Exit in 5 Seconds.')
-	except ValueError as e:
-		print(e)
-    	time.sleep(5)
-    	exit()
+        else:
+            mainOptions = str(re.search(r'viewerOptions\'\,\ (.*?)\)\;', pageSource).group(1))
 
-	
+            jsonString = json.loads(mainOptions, encoding="utf-8")
 
-def Link_Opener(Link):
-	try:
-		#opener = urllib2.build_opener()
-		#opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-		#response = opener.open('http://www.stackoverflow.com')
-		page = urllib2.urlopen(Link)
-	except urllib2.HTTPError, e:
-		#print e.code
-		#print e.msg
-		return
-		exit()
-	soup = BeautifulSoup(page,"lxml")
-	return soup
+            splashUrl = jsonString["streamUrl"]
+            downloadUrl = jsonString["downloadUrl"]
+            embedUrl = jsonString["embedUrl"]
+            ticket = jsonString["ticket"]
+            nodeName = jsonString["nodeName"]
+            filetype = jsonString["filetype"]
+            shareUrl = jsonString["shareUrl"]
+            nodeId = jsonString["nodeId"]
+            subtitles = jsonString["subtitles"]
+            streamUrl = jsonString["streamUrl"]
 
+            return (
+            streamUrl, splashUrl, downloadUrl, embedUrl, ticket, nodeId, nodeName, filetype, shareUrl, subtitles)
 
-def File_Lookup(soup):
-	try:
-		subtitles = soup.find_all('a',{'id':'download-btn'}) #The links were in the tag a, with 'id' as 'download-btn'
-		stringsubtitles = str(subtitles)
-		for link in subtitles:
-			for a in subtitles:
-				try:
-					ddl = str(a['href'])
-					if not ddl:
-						raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com")
-				except ValueError as e:
-					print(e)
-					time.sleep(5)
-					exit()
-				return ddl
+    def File_Downloader(self, ddl, fileName):
+        dlr = requests.get(ddl, stream=True)  # Downloading the content using python.
+        with open(fileName, "wb") as handle:
+            for data in tqdm(dlr.iter_content(chunk_size=1024)):  # Added chunk size to speed up the downloads
+                handle.write(data)
+        print("Download has been completed.")  # Viola
 
 
-		if not stringsubtitles:
-			raise ValueError("Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com")        
-	except Exception, e:
-		print(e)
-		time.sleep(5)
-        exit()
-
-
-def Title_Lookup(soup):
-	title1 = str(soup.title) #Title of the solidfile's web page
-	titleclean = title1.replace('<title>','').replace('</title>','').replace(' | Solidfiles','').replace('_',' ') #Let's remove that un-needed shit
-	return titleclean
-
-
-
-
-def File_Downloader(ddl,titleclean):
-	dlr = requests.get(ddl, stream=True) #Downloading the content using python.
-	with open(titleclean, "wb") as handle:
-		for data in tqdm(dlr.iter_content(chunk_size=1024)): #Added chunk size to speed up the downloads
-			handle.write(data)
-	print 'Download has been completed.' #Viola		
-
-
-
-
-
-Link = Link_Input()
-
-soup = Link_Opener(Link)
-if not soup:
-	print "Seems Like I couldn't find the Download Link. Please check manually and notify Xonshiz at xonshiz@psychoticelites.com"
-	exit()
-
-titleclean = Title_Lookup(soup)
-ddl = File_Lookup(soup)
-
-
-File_Downloader(ddl,titleclean)
+if __name__ == '__main__':
+    SolidFiles()
