@@ -49,6 +49,8 @@ You can get these libraries from `pip` or `easy_install` by running the commands
 
 4.) Re-wrote the script again to use the classes and remove the junk code. Simple structure now.
 
+5.) Removed `embedURL` entry. Seems like only `.mp4` has that parameter.
+
 # Donations
 You can always send some money over from this :
 

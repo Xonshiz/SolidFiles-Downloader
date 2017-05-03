@@ -51,7 +51,6 @@ class SolidFiles(object):
 
             splashUrl = jsonString["streamUrl"]
             downloadUrl = jsonString["downloadUrl"]
-            embedUrl = jsonString["embedUrl"]
             ticket = jsonString["ticket"]
             nodeName = jsonString["nodeName"]
             filetype = jsonString["filetype"]
