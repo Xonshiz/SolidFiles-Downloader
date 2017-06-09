@@ -31,6 +31,12 @@ You can get these libraries from `pip` or `easy_install` by running the commands
 
 3.) Press Enter and wait.
 
+If you want to download batch links, you can do so by passing an argument "-b or --batch" followed by the file name.
+The file name you are passing should be the file that holds all the links (new link on a new line) and is present in the directory of this script.
+
+For example : SolidFiles.exe --batch "links.txt"
+
+
 #NOTE:- I'd recommend running it in a cmd for first time, to see if you're missing anything important.
 
 
@@ -50,6 +56,8 @@ You can get these libraries from `pip` or `easy_install` by running the commands
 4.) Re-wrote the script again to use the classes and remove the junk code. Simple structure now.
 
 5.) Removed `embedURL` entry. Seems like only `.mp4` has that parameter.
+
+6.) Batch download enabled.
 
 # Donations
 You can always send some money over from this :
