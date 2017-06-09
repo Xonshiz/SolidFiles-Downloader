@@ -18,18 +18,37 @@ import re
 import json
 from tqdm import tqdm
 from sys import exit
+import argparse
 
 
 class SolidFiles(object):
     def __init__(self):
+        parser = argparse.ArgumentParser(description='SolidFiles downloader downloads files from solidfiles.com')
 
-        try:
-            downloadUrl = str(raw_input("Enter the url : ")).strip()  # <-- Python 2.7
-        except :
-            downloadUrl = str(input("Enter the url : ")).strip()  # <-- Python 3
+        parser.add_argument('-b', '--batch', nargs=1, help='Indicates a file name in current directory.')
 
-        streamUrl, splashUrl, downloadUrl, embedUrl, ticket, nodeId, nodeName, filetype, shareUrl, subtitles = self.webPageDownloader(downloadUrl)
-        self.File_Downloader(downloadUrl, str(nodeName).replace(".001", ""))
+        args = parser.parse_args()
+
+        if args.batch:
+            file_name = args.batch[0]
+            try:
+                with open(file_name, "r") as link_file:
+                    downloadUrl = link_file.readline().strip()
+
+                    downloadUrl, nodeName, filetype = self.webPageDownloader(downloadUrl)
+                    self.File_Downloader(downloadUrl, str(nodeName).replace(".001", ""))
+            except Exception as ex:
+                print(ex)
+                print("An error occurred. Check the file is present in the same directory.")
+                pass
+        if not args.batch:
+            try:
+                downloadUrl = str(raw_input("Enter the url : ")).strip()  # <-- Python 2.7
+            except:
+                downloadUrl = str(input("Enter the url : ")).strip()  # <-- Python 3
+
+            downloadUrl, nodeName, filetype = self.webPageDownloader(downloadUrl)
+            self.File_Downloader(downloadUrl, str(nodeName).replace(".001", ""))
 
 
     def webPageDownloader(self, url):
@@ -49,18 +68,17 @@ class SolidFiles(object):
 
             jsonString = json.loads(mainOptions, encoding="utf-8")
 
-            splashUrl = jsonString["streamUrl"]
+            # splashUrl = jsonString["streamUrl"]
             downloadUrl = jsonString["downloadUrl"]
-            ticket = jsonString["ticket"]
+            # ticket = jsonString["ticket"]
             nodeName = jsonString["nodeName"]
             filetype = jsonString["filetype"]
-            shareUrl = jsonString["shareUrl"]
-            nodeId = jsonString["nodeId"]
-            subtitles = jsonString["subtitles"]
-            streamUrl = jsonString["streamUrl"]
+            # shareUrl = jsonString["shareUrl"]
+            # nodeId = jsonString["nodeId"]
+            # subtitles = jsonString["subtitles"]
+            # streamUrl = jsonString["streamUrl"]
 
-            return (
-            streamUrl, splashUrl, downloadUrl, embedUrl, ticket, nodeId, nodeName, filetype, shareUrl, subtitles)
+            return (downloadUrl, nodeName, filetype)
 
     def File_Downloader(self, ddl, fileName):
         dlr = requests.get(ddl, stream=True)  # Downloading the content using python.
