@@ -34,10 +34,15 @@ class SolidFiles(object):
             try:
                 with open(file_name, "r") as link_file:
                     downloadUrl = link_file.readline().strip()
+<<<<<<< HEAD
                 lines = [line.rstrip('\n') for line in open(file_name)]
 
                 for link in lines:
                     downloadUrl, nodeName, filetype = self.webPageDownloader(link)
+=======
+
+                    downloadUrl, nodeName, filetype = self.webPageDownloader(downloadUrl)
+>>>>>>> 86a536ac30eaa42828f3d58cb6f74e249f5cad1d
                     self.File_Downloader(downloadUrl, str(nodeName).replace(".001", ""))
             except Exception as ex:
                 print(ex)
