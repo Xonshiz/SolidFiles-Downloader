@@ -10,6 +10,19 @@ python:
   - "3.6-dev" # 3.6 development branch
   - "nightly" # currently points to 3.7-dev
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install: 
+  - pip install -r requirements.txt
+  - pip install pyinstaller
 # command to run tests
-script: nosetests
+script:
+  - pyinstaller --onefile --hidden-import=queue "SolidFiles.py"
+  - cd \dist
+  
+deploy:
+  provider: releases
+  api_key: "1c088ea6054143f2943a6a4cd1a6c5e1c3e976c6"
+  file: "SolidFiles.exe"
+  overwrite: true
+  skip_cleanup: true
+  on:
+    tags: true
